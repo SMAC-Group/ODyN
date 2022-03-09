@@ -9,7 +9,7 @@ For more details and for the scientific background behind Dynamic Networks and `
 1. Cucci, Davide Antonio, 2022. ODyN: an online dynamic network solver for photogrammetry and LiDAR geo-referencing. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences (to appear)
 2. Cucci, Davide Antonio, Martin Rehak, and Jan Skaloud. "*Bundle adjustment with raw inertial observations in UAV applications.*" ISPRS Journal of photogrammetry and remote sensing 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
 
-`ODyN` is available for free, it can be used for free in any context, but it comes without any guarantee :)
+`ODyN` is available for free, it can be used in any context, but it comes without any guarantee :)
 
 # Access
 
@@ -51,9 +51,9 @@ If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determi
 
 In case the user wants to fuse also image observations, the following additional files should be included in the archive:
 
-- `bingo.txt`: image observations in bingo format
-- `image_timestamps`: exposure times for the images included in `bingo.txt`
-- `GCPs.txt` **[optional]**: 3D coordinates of Ground Control Points/Checkpoints
+- `bingo.txt`: image observations in bingo format,
+- `image_timestamps`: exposure times for the images included in `bingo.txt`,
+- `GCPs.txt` **[optional]**: 3D coordinates of Ground Control Points/Checkpoints.
 
 The detailed description of the format of those files is given below.
 
@@ -67,7 +67,8 @@ This file contains a sequence of position observations obtained from a GNSS rece
 
 An example of the content of this file is given below:
 
-```396400.000, 46.569360752778, 6.533852830556, 609.752100000000
+```
+396400.000, 46.569360752778, 6.533852830556, 609.752100000000
 396401.000, 46.569583791667, 6.533973002778, 607.718300000000
 396402.000, 46.569719905556, 6.534210213889, 606.953900000000
 396403.000, 46.569749733333, 6.534465997222, 607.169700000000
@@ -81,8 +82,8 @@ If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. 
 This file contains a sequence of raw specific force and angular velocity observations obtained from an IMU. It is a CSV file with **seven** columns and no header.
 
 - Column 1: measurement timestamp,
-- Column 2 - 4: angular velocity, in rad/s
-- Column 5 - 7: specific force, in m/s<sup>2</sup>
+- Column 2 - 4: angular velocity, in rad/s,
+- Column 5 - 7: specific force, in m/s<sup>2</sup>.
 
 The `IMU.txt` files sets the time limits for the processing, meaning that no solution can be computed for timestamps before the first or after the last entry in the file. 
 
@@ -109,9 +110,7 @@ This file contains an initial solution for the body frame position and orientati
 
 A row in the `initial_guess.txt` file should be present for each IMU measurement in the `IMU.txt` file. More rows are allowed, but not less.
 
-
 `ODyN` assumes that the gravity vector is directed along the Up axis of the local level frame and it is the same at all positions. Thus, the user should pick the local level frame so that it is *not too far* from the trajectory to avoid undesirable effects related to the change of the direction of the gravity vector. Soon, `ODyN` will support inertial navigation in ECEF frame, thus removing the issue.
-
 
 An example of the content of this file is given below:
 
