@@ -1,13 +1,15 @@
 # ODyN, an Online Dynamic Network solver
 
-This repository hosts `ODyN`, a free Dynamic Network (DN) solver that runs online in the browser. `ODyN` fuses information from cameras, GNSS and inertial sensors in a single adjustment and it can be used to estimate a high-frequency trajectory for precise direct geo-referencing, to improve photogrammetric reconstructions in challenging scenarios or to determine several types of system calibration parameters.
+This repository hosts `ODyN`, a free Dynamic Network (DN) solver that runs online and uses the browser as an interface for data I/O, option settings and result visualization. `ODyN` fuses information from navigation (GNSS, inertial) and optical sensors (camera, lidar) in a single adjustment and it can be used to optimally estimate a high-frequency trajectory for precise direct geo-referencing, to improve photogrammetric and/or lidar reconstructions in challenging scenarios or to determine system and sensor calibration parameters.
 
-`ODyN` is a [R Shiny](https://shiny.rstudio.com/) application providing an user-friendly Graphical User Interface (GUI) for the [ROAMFREE](https://github.com/AIRLab-POLIMI/ROAMFREE) sensor fusion library, which contains the actual solver for Dynamic Network adjustment problems. The processing of the user-provided data happens on backend servers provided by the [Data Analytics Laboratory](https://data-analytics-lab.netlify.app/), University of Geneva, CH. 
+`ODyN` is a [R Shiny](https://shiny.rstudio.com/) application providing an user-friendly Graphical User Interface (GUI) for the [ROAMFREE](https://github.com/AIRLab-POLIMI/ROAMFREE) sensor fusion library, which contains the actual solver for Dynamic Network adjustment problems. The processing of the user-provided data happens on backend servers provided by the by the [ENAC-IT 4 Research](https://it4r.super.site) of Swiss Federal Institute of Technology Lausanne [EPFL](https://www.epfl.ch) as well as [Data Analytics Laboratory](https://data-analytics-lab.netlify.app/), University of Geneva, CH. 
 
 For more details and for the scientific background behind Dynamic Networks and `ODyN`, please refer to
 
 1. Cucci, Davide Antonio, 2022. ODyN: an online dynamic network solver for photogrammetry and LiDAR geo-referencing. ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences (to appear)
 2. Cucci, Davide Antonio, Martin Rehak, and Jan Skaloud. "*Bundle adjustment with raw inertial observations in UAV applications.*" ISPRS Journal of photogrammetry and remote sensing 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
+3. Brun, Aurélien, Davide-Antonio Cucci, and Jan Skaloud  "*LiDAR point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks.*" arXiv [preprint](https://arxiv.org/abs/2201.00596).
+4. Mouzakkidou, Kyriaki, Davide-Antonio Cucci, and Jan Skaloud "*On the benefit of concurent adjustment of active and passive optical sensors with GNSS & raw inertial data*", Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, (2022): *to appear*. 
 
 `ODyN` is available for free, it can be used in any context, but it comes without any guarantee :)
 
@@ -17,9 +19,11 @@ For more details and for the scientific background behind Dynamic Networks and `
 
 **N.B. ODyN is in active state of development**. There might be errors, or bugs, or malfunctions. Please, **help us** to improve our work! You can report any issue or problems you run into using the [Issues](https://github.com/SMAC-Group/ODyN/issues) page of this repository, we will do our best to assist you and correct problems as soon as possible.
 
-To reproduce the results presented in [1], one can use the following data files and configuration:
-- Data:
-- Configuration:
+To reproduce the results presented in [1], [3] and [4] with *GNSS+IMU+(camera)+(lidar)* one can use the following data files and configuration:
+- Data:[TBD]
+- Configuration [1] with *GNSS+IMU+camera*: [TBD]
+- Configuration [3] with *GNSS+IMU+lidar*: [TBD]
+- Configuration [4] with *GNSS+IMU+lidar+camera*: [TBD]
 
 # Documentation
 
@@ -27,13 +31,13 @@ The use of `ODyN` is straightforward.
 
 1. Upload a `.zip` file containing all sensor measurements (see section 'Input file formats' below).
 2. Verify that the data files are loaded correctly (check the messages below the file upload input).
-2. [Optional] Upload an `.RData`file containing the configuration of all parameters (see point 8 below).
-3. Provide all required configuration parameter according to your setup.
+2. [Optional] Upload an `.RData`file containing the configuration of all parameters (see *Step 8* below).
+3. Enter all required configuration parameter via GUI according to your setup (or in case of *Step 2* verify that these were loaded and interpretted correctly).
 4. Hit the **Process** button and wait. Depending on the input, few minutes may be required.
-6. If everything has gone well, check the results in the provided plots. Otherwise go back to 4 and fix the problem.
+6. If everything has gone well, check the results in the provided plots. Otherwise go back to *Step 4* and fix the problem.
 7. Download the solution file
 8. [Optional] Download the configuration to be reused later on.
-9. [Optional] Generate a shareable link to the output.
+9. [Optional] Generate a shareable link to the output on-line.
 
 ## Input file formats
 
@@ -43,27 +47,36 @@ All input files should be included in a `.zip` archive. This file should be then
 
 - `GPS.txt`: position measurements from a GNSS receiver,
 - `IMU.txt`: raw specific force and angular velocity measurements from an Inertial Measurement Unit (IMU),
-- `initial_guess.txt` **[optional]**: an initial solution that will be used to initialize the DN solver.
+- `initial_guess.txt` **[optional]**: an initial solution that will be used to initialize the DN solver, 
+- `config.Rdata` **[optional]**: configuration file obtained from previous `ODyN` execution (*applicable also to optical sensors below*)
 
-If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x axis is tangent to the body frame trajectory.
+If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x axis is tangent to the body frame trajectory. For this approach to work, certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame). 
 
-### Inertial navigation + photogrammetry
+### Navigation + photogrammetry
 
 In case the user wants to fuse also image observations, the following additional files should be included in the archive:
 
-- `bingo.txt`: image observations in bingo format,
-- `image_timestamps`: exposure times for the images included in `bingo.txt`,
-- `GCPs.txt` **[optional]**: 3D coordinates of Ground Control Points/Checkpoints.
+- `bingo.txt`: image observations in bingo format, unit: *pixels*,
+- `image_timestamps`: exposure times for the images included in `bingo.txt`, unit: *seconds*,
+- `GCPs.txt` **[optional]**: 3D coordinates of Ground Control Points/Checkpoints, unit: *meters*.
 
 The detailed description of the format of those files is given below.
 
+### Navigation + lidar
+
+In case the user wants to fuse also lidar point-to-point spatial constraints, the following additional file should be included in the archive:
+
+- `lidar_tp.txt`: lidar observations of tie-points.   
+
+The detailed description of the format of this file is given below.
+
 ### File `GPS.txt`
 
-This file contains a sequence of position observations obtained from a GNSS receiver. It is a Coma Separated Value (CSV) file with **four** columns and no header.
+This file contains a sequence of position observations obtained from a GNSS receiver. It is a Coma Separated Value (CSV) file with **four** or **[opional] seven** columns and no header.
 
-- Column 1: epoch time in seconds,
-- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, expressed in degrees.
-
+- Column 1: epoch time, unit *seconds*,
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
+- Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions, unit: *meter*.  
 
 An example of the content of this file is given below:
 
@@ -81,9 +94,9 @@ If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. 
 
 This file contains a sequence of raw specific force and angular velocity observations obtained from an IMU. It is a CSV file with **seven** columns and no header.
 
-- Column 1: measurement timestamp,
-- Column 2 - 4: angular velocity, in rad/s,
-- Column 5 - 7: specific force, in m/s<sup>2</sup>.
+- Column 1: measurement timestamp, unit *seconds*, 
+- Column 2 - 4: angular velocity, unit *rad/s*,
+- Column 5 - 7: specific force, unit  *m/s<sup>2</sup>*.
 
 The `IMU.txt` files sets the time limits for the processing, meaning that no solution can be computed for timestamps before the first or after the last entry in the file. 
 
@@ -105,12 +118,12 @@ An example of the content of this file for a 500 Hz IMU is given below:
 
 This file contains an initial solution for the body frame position and orientation that is used to initialize the Dynamic Network solver. It is a CSV file with **eight** columns and no header.
 - Column 1: timestamp
-- Column 2 - 4: the position of the body frame, in terms of East, North, and Up coordinates with respect to an user-defined local level frame
-- Column 5 - 8: a quaternion representing R<sup>*n*</sup><sub>*b*</sub>, where *n* is a local level frame 
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
+- Column 5 - 8: a quaternion representing R<sup>*n*</sup><sub>*b*</sub>, where *n* is a local level frame, unit: *N/A* 
 
 A row in the `initial_guess.txt` file should be present for each IMU measurement in the `IMU.txt` file. More rows are allowed, but not less.
 
-`ODyN` assumes that the gravity vector is directed along the Up axis of the local level frame and it is the same at all positions. Thus, the user should pick the local level frame so that it is *not too far* from the trajectory to avoid undesirable effects related to the change of the direction of the gravity vector. Soon, `ODyN` will support inertial navigation in ECEF frame, thus removing the issue.
+`ODyN` uses simple gravity ellipsoidical model.
 
 An example of the content of this file is given below:
 
@@ -121,3 +134,22 @@ An example of the content of this file is given below:
 396401.060, -1904.571240963, 1449.828357413, 605.910750385, -0.220010575, 0.916213164, 0.319082538, -0.101661786
 396401.080, -1904.259969614, 1450.240503639, 605.882340958, -0.220546280, 0.918408515, 0.312620830, -0.100763856
 ```
+
+### File `lidar_tp.txt` 
+
+This file contains the spatial conditions between two points observed by lidar from different parts of the trajectory. These tie-points are expressed by their respective time and coordinates in the *scanner frame* in a CSV file with **eight** columns and no header.
+
+- Column 1 - 2: time stamps in *seconds* for the first and second tie-points, respectively
+- Column 3 - 5: x-y-z coordinates of the **first** tie-point in the scanner frame, units: *meters* 
+- Column 6 - 8: x-y-z coordinates of the **second** tie-point in the scanner frame, units: *meters* 
+- Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*  
+
+An example of the content of this file is given below: 
+
+``` 
+396765.649713,396660.533676,271.420000,-2.570000,18.060000,263.280000,-2.520000,-135.520000
+396767.558842,396659.053466,263.810000,-2.520000,-0.480000,259.870000,-2.470000,-126.380000
+396770.806328,396656.979838,250.690000,-2.390000,-76.950000,257.880000,-2.460000,-38.400000
+396775.153753,396651.601487,272.190000,-2.600000,-21.910000,278.930000,-2.650000,-110.880000
+``` 
+
