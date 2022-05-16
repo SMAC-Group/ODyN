@@ -41,7 +41,7 @@ The use of `ODyN` is straightforward according to the following steps:
 
 ## Input file formats
 
-All input files should be included in a `.zip` archive. This file should be then uploaded in the **Inputs** section of the interface (*Step 1* above). The archive should contain the following files, format of which is specified further below with sections 'File xxx.xxx'.  
+All input files should be included in a `.zip` archive. This file should be then uploaded in the **Inputs** section of the interface (*Step 1* above). The archive should contain the following files, format of which is specified further below with sections 'File xxx.xxx', that is preceeded with a short overview of file contents related to *Navigation* (mandatory) and *Navigation + Lidar/Photogrammetry* (optional).  
 
 >**Warning**: The file names *must match exactly*!
 
@@ -52,9 +52,9 @@ All input files should be included in a `.zip` archive. This file should be then
 - `initial_guess.txt` **[optional]**: an initial trajectory solution that will be used to initialize the DN solver, 
 - `config.Rdata` **[optional]**: configuration file obtained from previous `ODyN` execution (*applicable also to optical sensors below*)
 
-If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x axis is tangent to the body frame trajectory. For this approach to work, certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame). 
+The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
 
->Note: IMU and GPS files are *always* required. `ODyN` uses  WGS84 normal gravity model. More detailed Earth Gravity Model (e.g., EMG96) maybe implemented in the future. 
+>Note: IMU and GPS files are *always* required. `ODyN` uses  WGS84 normal gravity model. More detailed Earth Gravity Model(s) (e.g., EMG96) maybe implemented in the future. 
 
 ### Navigation + Photogrammetry
 
@@ -80,9 +80,9 @@ This file contains a sequence of position observations obtained from a GNSS rece
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
-- Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions, unit: *meter*.  
+- ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented)  
 
-An example of the content of this file (without incertitudes) is given below:
+An example of the content of this file (~~without incertitudes~~) is given below:
 
 ```
 396400.000, 46.569360752778, 6.533852830556, 609.752100000000
@@ -103,7 +103,7 @@ This file contains a sequence of raw specific force and angular velocity observa
 
 The `IMU.txt` files sets the time limits for the processing, meaning that no solution can be computed for timestamps before the first or after the last entry in the file. 
 
-The IMU observations must be synchronized with the GPS or GNSS receiver, in the sense that the measurement timestamps reported for the IMU readings should be in GPS time. If this is not the case, the two sensors can not be properly fused together by `ODyN`. Small jitters or delays can be tolerated, but a reduction of the performance (that is difficult to quantify) should be expected. A solution for sensor time-stamping and synchronization is to use the [SentiBoard](https://sentisystems.com/sales-2/).
+The IMU observations must be synchronized with the GPS or GNSS receiver, in the sense that the measurement timestamps reported for the IMU readings should be in GPS time. If this is not the case, the two sensors can not be properly fused together by `ODyN`. Small jitters or delays can be tolerated, but a reduction of the performance (that is difficult to quantify) should be expected. An external solution for IMU sensor time-stamping and synchronization is to use the [SentiBoard](https://sentisystems.com/sales-2/).
 
 Additionally, the IMU must have a constant rate and no samples can be missing. `ODyN` determines the nominal frequency of the IMU taking the difference between the timestamps of the first two measurements. The user should also make sure that a sufficient number of digits is employed to represent IMU readings in the CSV file.
 
@@ -120,12 +120,11 @@ An example of the content of this file for a 500 Hz IMU is given below:
 ### File `initial_guess.txt` [optional]
 
 This file contains an initial solution for the body frame position and orientation that is used to initialize the Dynamic Network solver. It is a CSV file with **eight** columns and no header.
-- Column 1: timestamp
+- Column 1: timestamp, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
 - Column 5 - 8: a quaternion representing R<sup>*n*</sup><sub>*b*</sub>, where *n* is a local level frame, unit: *N/A* 
 
 A row in the `initial_guess.txt` file should be present for each IMU measurement in the `IMU.txt` file. More rows are allowed, but not less.
-
 An example of the content of this file is given below:
 
 ```
@@ -138,11 +137,9 @@ An example of the content of this file is given below:
 
 ### File `bingo.txt`
 
-This is a file format of immage observation used BINGO adjustment software and supported by other suites (e.g., pix4D, AgiSoft). 
+This is a file format of image observations as used within BINGO adjustment software that is supported also by modern photogrammetric suites (e.g., Pix4D, AgiSoft). However, in contrary to BINGO, the unites of image coordinates are in *pixels*!
 
-The first line contains photo and camera number. If the camera number is missing, the camera number of the preceding photo is used. The default value for the camera number of the first photo is 1. Optionally, two dummy coordinate values between photo and camera number may be given. A negative point number (for example -99) indicates end of data for each photo. Then the next photo follows.
-
-The input of the photo measures is effected with free format. 
+The input of the photo measures is effected with free format. The first line contains photo and camera number. If the camera number is missing, the camera number of the preceding photo is used. The default value for the camera number of the first photo is 1. Optionally, two dummy coordinate values between photo and camera number may be given. A negative point number (for example -99) indicates end of data for each photo. Then the next photo follows. End of data is indicated by an **END** statement of the last line in the file!
 
 
 | First photo | photo no. camera no. |
@@ -158,9 +155,10 @@ The input of the photo measures is effected with free format.
 |            | : |
 |            | point no. x' y' |
 | Last line  | -99 |
+| :  | : |
+|    | END |
 
-
-> units: *pixels*, end of data is indicated by an **END** statement of the last line in the file! 
+> units: *pixels*.  
 
 An example of the content of this file for two photos is given below: 
 
@@ -189,20 +187,25 @@ END
 ```
 ### File `image_timestamps.txt`
 
-Exposure time (1 per line) for all images included in `bingo.txt` in a chronological order, unit: *seconds*. 
+Photo ID with exposure time (1 per line) for all images included in `bingo.txt` in a chronological order.
 Time unis needs to be the same as for IMU.txt and GPS.txt. 
+
+- Column 1: photo no., unit *ID*, 
+- Column 2: timestamp, unit *seconds*,
 
 An example of the content of this file is given below: 
 
 ```
-396774.806328
-306776.213498
+1 396774.806328
+2 306776.213498
 ```
 
 ### File `GCPs.txt`
 
-- Column 1 - 2: TBD 
-- Columm 3: TBD
+Ground control (or check-points) point coordinates
+
+- Column 1: gcp_no, unit *ID*
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
 
 
 ### File `lidar_tp.txt` 
@@ -212,7 +215,7 @@ This file contains the spatial conditions between two points observed by lidar f
 - Column 1 - 2: time stamps in *seconds* for the first and second tie-points, respectively
 - Column 3 - 5: x-y-z coordinates of the **first** tie-point in the scanner frame, units: *meters* 
 - Column 6 - 8: x-y-z coordinates of the **second** tie-point in the scanner frame, units: *meters* 
-- Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*  
+- ~~Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*  ~~
 
 ``` 
 396765.649713,396660.533676,271.420000,-2.570000,18.060000,263.280000,-2.520000,-135.520000
