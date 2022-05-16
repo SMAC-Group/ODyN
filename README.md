@@ -23,7 +23,7 @@ To reproduce the results presented in [1], [3] and [4] with *GNSS+IMU+(camera)+(
 - Data: [TBD]
 - Configuration [1] with *GNSS+IMU+camera*: [TBD]
 - Configuration [3] with *GNSS+IMU+lidar*: [TBD]
-- Configuration [4] with *GNSS+IMU+lidar+camera*: [TBD]
+- Configuration [4] with *GNSS+IMU+(lidar)+camera*: [TBD]
 
 # Documentation
 
@@ -215,7 +215,7 @@ This file contains the spatial conditions between two points observed by lidar f
 - Column 1 - 2: time stamps in *seconds* for the first and second tie-points, respectively
 - Column 3 - 5: x-y-z coordinates of the **first** tie-point in the scanner frame, units: *meters* 
 - Column 6 - 8: x-y-z coordinates of the **second** tie-point in the scanner frame, units: *meters* 
-- ~~Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*  ~~
+- ~~Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*~~ (not yet implemented)
 
 ``` 
 396765.649713,396660.533676,271.420000,-2.570000,18.060000,263.280000,-2.520000,-135.520000
