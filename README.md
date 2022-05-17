@@ -33,7 +33,7 @@ Most of the data has been gently made available by Dr. Julien Vallet, director o
 
 ### Configuration
 
-All data files can be used with the same configuration file available at [data/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/configuration.zip)
+All data files can be used with the same configuration file available at [data/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/configuration.RData)
 
 ### Inertial Navigation
 
