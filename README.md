@@ -96,13 +96,13 @@ In case the user wants to fuse also lidar point-to-point spatial constraints, th
 
 The detailed description of the format of this file is given below.
 
-### File `GPS.txt`
+### File `GPS.txt` 
 
-This file contains a sequence of position observations obtained from a GNSS receiver. It is a Coma Separated Value (CSV) file with **four** or **[opional] seven** columns and no header.
+This file contains a sequence of position observations obtained from a GNSS receiver. It is a Coma Separated Value (CSV) file with **four** ~~or **[opional] seven**~~ columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
-- ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented)  
+- ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented) 
 
 An example of the content of this file (~~without incertitudes~~) is given below:
 
@@ -114,6 +114,8 @@ An example of the content of this file (~~without incertitudes~~) is given below
 396404.000, 46.569701600000, 6.534688980556, 606.820900000000
 ```
 If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. This also holds if such file is not provided, but complex maneuvers during GNSS outages can prevent the solver to converge.
+
+>NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format
 
 ### File `IMU.txt`
 
@@ -156,6 +158,8 @@ An example of the content of this file is given below:
 396401.060, -1904.571240963, 1449.828357413, 605.910750385, -0.220010575, 0.916213164, 0.319082538, -0.101661786
 396401.080, -1904.259969614, 1450.240503639, 605.882340958, -0.220546280, 0.918408515, 0.312620830, -0.100763856
 ```
+> NOTE: *Alterantive* file is `initial_guess.out` corresponding to Applanix's **sbet** (or snv) format  
+
 
 ### File `bingo.txt`
 
@@ -212,7 +216,7 @@ END
 Photo ID with exposure time (1 per line) for all images included in `bingo.txt` in a chronological order.
 Time unis needs to be the same as for IMU.txt and GPS.txt. 
 
-- Column 1: photo no., unit *ID*, 
+- Column 1: photo no., unit *integer*, 
 - Column 2: timestamp, unit *seconds*,
 
 An example of the content of this file is given below: 
@@ -226,8 +230,8 @@ An example of the content of this file is given below:
 
 Ground control (or check-points) point coordinates
 
-- Column 1: gcp_no, unit *ID*
-- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
+- Column 1: gcp_no, unit *integer*
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meters*,
 
 
 ### File `lidar_tp.txt` 
