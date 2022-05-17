@@ -2,28 +2,50 @@
 
 This repository hosts `ODyN`, a free Dynamic Network (DN) solver that runs online and uses the browser as an interface for data I/O, option settings and result visualization. `ODyN` fuses information from navigation (GNSS, inertial) and optical sensors (camera, lidar) in a single adjustment and it can be used to optimally estimate a high-frequency trajectory for precise geo-referencing, to improve photogrammetric and/or lidar reconstructions in challenging scenarios or to determine system and sensor calibration parameters.
 
-`ODyN` is a [R Shiny](https://shiny.rstudio.com/) application featuring an user-friendly Graphical User Interface (GUI) for the [ROAMFREE](https://github.com/AIRLab-POLIMI/ROAMFREE) sensor fusion library, which contains the actual solver for Dynamic Network adjustment problems. The processing of the user-provided data happens on backend servers provided by the by the [ENAC-IT 4 Research](https://it4r.super.site) at Swiss Federal Institute of Technology Lausanne [EPFL](https://www.epfl.ch) as well as [Data Analytics Laboratory](https://data-analytics-lab.netlify.app/) at [University of Geneva](https://unige.ch/en/), CH. 
+`ODyN` is a [R Shiny](https://shiny.rstudio.com/) application featuring an user-friendly Graphical User Interface (GUI) for the [ROAMFREE](https://github.com/AIRLab-POLIMI/ROAMFREE) sensor fusion library, which contains the actual solver for Dynamic Network adjustment problems. The processing of the user-provided data happens on backend servers provided by the by the [ENAC-IT 4 Research](https://it4r.super.site) at Swiss Federal Institute of Technology Lausanne [EPFL](https://www.epfl.ch).
 
-For more details and for the scientific background behind Dynamic Networks and `ODyN`, please refer to
+The white paper describing `ODyN` can be found at
 
-1. Cucci, Davide Antonio, 2022. "*ODyN: an online dynamic network solver for photogrammetry and LiDAR geo-referencing*". ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, (to appear)
-2. Cucci, Davide Antonio, Martin Rehak, and Jan Skaloud, 2017. "*Bundle adjustment with raw inertial observations in UAV applications*". ISPRS Journal of photogrammetry and remote sensing, 130, 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
-3. Brun, Aurélien, Davide-Antonio Cucci, and Jan Skaloud, 2022, "*Lidar point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks.*" arXiv [preprint](https://arxiv.org/abs/2201.00596).
-4. Mouzakkidou, Kyriaki, Davide-Antonio Cucci, and Jan Skaloud, 2022 "*On the benefit of concurent adjustment of active and passive optical sensors with GNSS & raw inertial data*", Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences, (to appear). 
+1. Cucci, D.A., "ODyN: an online dynamic network solver for photogrammetry and LiDAR geo-referencing". *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, (2022) to appear
+
+for more information and for the scientific backgorund of Dynamic Networs and applications to navigation, mapping and sensor orientation in general, please refer to:
+
+2. Cucci, D.A., Rehak. M, and Skaloud, J. "Bundle adjustment with raw inertial observations in UAV applications". *ISPRS Journal of photogrammetry and remote sensing* 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
+3. Brun, A., Cucci, D.A., and Skaloud, J. "Lidar point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks." *arXiv [preprint](https://arxiv.org/abs/2201.00596)*.
+4. Mouzakkidou, K., Cucci, D.A., and Skaloud, J. "On the benefit of concurent adjustment of active and passive optical sensors with GNSS & raw inertial data", *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, 2022 (to appear). 
 
 `ODyN` is available for free, it can be used in any context, but it comes without any guarantee :)
 
 # Access
 
-`ODyN` is available [ --> here <--](http://129.194.40.13:3839/app/dn_gui).
+`ODyN` is available at [odyn.epfl.ch](https://odyn.epfl.ch).
 
 **N.B. ODyN is in active state of development**. There might be errors, or bugs, or malfunctions. Please, **help us** to improve our work! You can report any issue or problems you run into using the [Issues](https://github.com/SMAC-Group/ODyN/issues) page of this repository, we will do our best to assist you and correct problems as soon as possible.
 
-To reproduce the results presented in [1], [3] and [4] with *GNSS+IMU+(camera)+(lidar)* one can use the following data files and configurations:
-- Data: [TBD]
-- Configuration [1] with *GNSS+IMU+camera*: [TBD]
-- Configuration [3] with *GNSS+IMU+lidar*: [TBD]
-- Configuration [4] with *GNSS+IMU+(lidar)+camera*: [TBD]
+# Examples
+
+Example data and configuration is provided in this repository as described in the following (to use these files in ODyN please see the *"Documentation"* section later on). Among other things, this data allows to reproduce some of the results presented in [1,3,4]. 
+
+Most of the data has been gently made available by Dr. Julien Vallet, director of [Helimap Sixense](https://helimap.ch), and described in the following scientific publication:
+
+- Vallet, J., Gressin, A., Clausen, P., and Skaloud, J. "Airborne And Mobile Lidar, Which Sensors For Which Application?". *The International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences*, 43 (2020): 397-405.
+
+
+### Configuration
+
+All data files can be used with the same configuration file available at [data/configuration.RData](data/configuration.RData)
+
+### Inertial Navigation
+
+Data file: [data/INS.zip](data/INS.zip)
+
+### Inertial Navigation + LiDAR point-to-point correspondences
+
+Data file: [data/INS+lidar.zip](data/INS+photo.zip)
+
+### Inertial Navigation + image tie-points (photogrammetry)
+
+Data file: [data/INS+photo.zip](data/INS+photo.zip)
 
 # Documentation
 
