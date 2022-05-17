@@ -33,19 +33,19 @@ Most of the data has been gently made available by Dr. Julien Vallet, director o
 
 ### Configuration
 
-All data files can be used with the same configuration file available at [data/configuration.RData](data/configuration.RData)
+All data files can be used with the same configuration file available at [data/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/configuration.zip)
 
 ### Inertial Navigation
 
-Data file: [data/INS.zip](data/INS.zip)
+Data file: [data/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS.zip)
 
 ### Inertial Navigation + LiDAR point-to-point correspondences
 
-Data file: [data/INS+lidar.zip](data/INS+photo.zip)
+Data file: [data/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+lidar.zip)
 
 ### Inertial Navigation + image tie-points (photogrammetry)
 
-Data file: [data/INS+photo.zip](data/INS+photo.zip)
+Data file: [data/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+photo.zip)
 
 # Documentation
 
