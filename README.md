@@ -72,6 +72,7 @@ All input files should be included in a `.zip` archive. This file should be then
 - `GPS.txt`: position measurements from a GNSS receiver,
 - `IMU.txt`: raw specific force and angular velocity measurements from an Inertial Measurement Unit (IMU),
 - `initial_guess.txt` **[optional]**: an initial trajectory solution that will be used to initialize the DN solver, 
+- `reference.txt` **[optional]**: a reference trajectory to compare the output of the DN solver, 
 - `config.Rdata` **[optional]**: configuration file obtained from previous `ODyN` execution (*applicable also to optical sensors below*)
 
 The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
@@ -159,6 +160,13 @@ An example of the content of this file is given below:
 396401.080, -1904.259969614, 1450.240503639, 605.882340958, -0.220546280, 0.918408515, 0.312620830, -0.100763856
 ```
 > NOTE: *Alterantive* file is `initial_guess.out` corresponding to Applanix's **sbet** (or snv) format  
+
+
+### File `reference.txt` [optional]
+
+Same format as `initial_guess.txt` 
+
+> NOTE: *Alterantive* file is `reference.out` corresponding to Applanix's **sbet** (or snv) format  
 
 
 ### File `bingo.txt`
