@@ -102,7 +102,7 @@ This file contains a sequence of position observations obtained from a GNSS rece
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
-- ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented) 
+- ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented, use a global const. value) 
 
 An example of the content of this file (~~without incertitudes~~) is given below:
 
@@ -224,13 +224,13 @@ Photo ID with exposure time (1 per line) for all images included in `bingo.txt` 
 Time unis needs to be the same as for IMU.txt and GPS.txt. 
 
 - Column 1: photo no., unit *integer*, 
-- Column 2: timestamp, unit *seconds*,
+- Column 2: timestamp, unit *seconds*
 
 An example of the content of this file is given below: 
 
 ```
-1 396774.806328
-2 306776.213498
+1,   396774.806328
+2,   306776.213498
 ```
 
 ### File `GCPs.txt`
@@ -248,7 +248,7 @@ This file contains the spatial conditions between two points observed by lidar f
 - Column 1 - 2: time stamps in *seconds* for the first and second tie-points, respectively
 - Column 3 - 5: x-y-z coordinates of the **first** tie-point in the scanner frame, units: *meters* 
 - Column 6 - 8: x-y-z coordinates of the **second** tie-point in the scanner frame, units: *meters* 
-- ~~Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*~~ (not yet implemented)
+- ~~Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*~~ (not yet implemented, uses global const. value)
 
 ``` 
 396765.649713,396660.533676,271.420000,-2.570000,18.060000,263.280000,-2.520000,-135.520000
