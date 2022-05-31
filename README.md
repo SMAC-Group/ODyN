@@ -12,7 +12,7 @@ for more information and for the scientific backgorund of Dynamic Networs and ap
 
 2. Cucci, D.A., Rehak. M, and Skaloud, J. "Bundle adjustment with raw inertial observations in UAV applications". *ISPRS Journal of photogrammetry and remote sensing* 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
 3. Brun, A., Cucci, D.A., and Skaloud, J. "Lidar point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks." *ISPRS Journal of Photogrammetry and Remote Sensing*, 189, 185-200. [PDF](https://doi.org/10.1016/j.isprsjprs.2022.04.027)
-4. Mouzakkidou, K., Cucci, D.A., and Skaloud, J. "On the benefit of concurent adjustment of active and passive optical sensors with GNSS & raw inertial data", *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, 2022 (to appear). 
+4. Mouzakkidou, K., Cucci, D.A., and Skaloud, J. "On the benefit of concurrent adjustment of active and passive optical sensors with GNSS & raw inertial data", *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, 2022 (to appear). 
 
 `ODyN` is available for free, it can be used in any context, but it comes without any guarantee :)
 
