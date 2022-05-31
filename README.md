@@ -158,14 +158,14 @@ An example of the content of this file is given below:
 396401.060, -1904.571240963, 1449.828357413, 605.910750385, -0.220010575, 0.916213164, 0.319082538, -0.101661786
 396401.080, -1904.259969614, 1450.240503639, 605.882340958, -0.220546280, 0.918408515, 0.312620830, -0.100763856
 ```
-> NOTE: *Alterantive* file is `initial_guess.out` corresponding to Applanix's **sbet** (or snv) format  
+> NOTE: *Alterantive* file is `initial_guess.out` corresponding to Applanix's [SBET](https://github.com/schwehr/research-tools/blob/master/python-binary-files.org) (or SNV, which is the same) format  
 
 
 ### File `reference.txt` [optional]
 
 Same format as `initial_guess.txt` 
 
-> NOTE: *Alterantive* file is `reference.out` corresponding to Applanix's **sbet** (or snv) format  
+> NOTE: *Alterantive* file is `reference.out` corresponding to Applanix's [SBET](https://github.com/schwehr/research-tools/blob/master/python-binary-files.org) (or SNV, whichi is the same) format  
 
 
 ### File `bingo.txt`
