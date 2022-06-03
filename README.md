@@ -2,17 +2,17 @@
 
 This repository hosts `ODyN`, a free Dynamic Network (DN) solver that runs online and uses the browser as an interface for data I/O, option settings and result visualization. `ODyN` fuses information from navigation (GNSS, inertial) and optical sensors (camera, lidar) in a single adjustment and it can be used to optimally estimate a high-frequency trajectory for precise geo-referencing, to improve photogrammetric and/or lidar reconstructions in challenging scenarios or to determine system and sensor calibration parameters.
 
-`ODyN` is a [R Shiny](https://shiny.rstudio.com/) application featuring an user-friendly Graphical User Interface (GUI) for the [ROAMFREE](https://github.com/AIRLab-POLIMI/ROAMFREE) sensor fusion library, which contains the actual solver for Dynamic Network adjustment problems. The processing of the user-provided data happens on backend servers provided by the by the [ENAC-IT 4 Research](https://it4r.super.site) at Swiss Federal Institute of Technology Lausanne [EPFL](https://www.epfl.ch).
+`ODyN` is a [R Shiny](https://shiny.rstudio.com/) application featuring an user-friendly Graphical User Interface (GUI) for the [ROAMFREE](https://github.com/AIRLab-POLIMI/ROAMFREE) sensor fusion library, which contains the actual solver for Dynamic Network adjustment problems. The processing of the user-provided data happens on backend servers provided by the [ENAC-IT 4 Research](https://it4r.super.site) at Swiss Federal Institute of Technology Lausanne [EPFL](https://www.epfl.ch).
 
-The white paper describing `ODyN` can be found at
+The white paper describing `ODyN` can be found at:
 
 1. Cucci, D.A., "ODyN: an online dynamic network solver for photogrammetry and LiDAR geo-referencing". *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, V-1-2022, 153–159. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2022-153-2022)
 
-for more information and for the scientific backgorund of Dynamic Networks and applications to navigation, mapping and sensor orientation in general, please refer to the following scientific publications:
+For more information and for the scientific backgorund of Dynamic Networks and applications to navigation, mapping and sensor orientation in general, please refer to the following scientific publications:
 
-2. Cucci, D.A., Rehak. M, and Skaloud, J. "Bundle adjustment with raw inertial observations in UAV applications". *ISPRS Journal of photogrammetry and remote sensing* 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
-3. Brun, A., Cucci, D.A., and Skaloud, J. "Lidar point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks." *ISPRS Journal of Photogrammetry and Remote Sensing*, 189, 185-200. [PDF](https://doi.org/10.1016/j.isprsjprs.2022.04.027)
-4. Mouzakkidou, K., Cucci, D.A., and Skaloud, J. "On the benefit of concurrent adjustment of active and passive optical sensors with GNSS & raw inertial data", *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, V-1-2022, 161-168. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2022-161-2022). 
+2. Cucci, D.A., Rehak. M, and Skaloud, J., "Bundle adjustment with raw inertial observations in UAV applications". *ISPRS Journal of photogrammetry and remote sensing* 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
+3. Brun, A., Cucci, D.A., and Skaloud, J., "Lidar point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks." *ISPRS Journal of Photogrammetry and Remote Sensing*, 189 (2022): 185-200. [PDF](https://doi.org/10.1016/j.isprsjprs.2022.04.027)
+4. Mouzakkidou, K., Cucci, D.A., and Skaloud, J., "On the benefit of concurrent adjustment of active and passive optical sensors with GNSS & raw inertial data", *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, V-1-2022: 161-168. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2022-161-2022). 
 
 `ODyN` is available for free, it can be used in any context, but it comes without any guarantee :)
 
@@ -20,17 +20,19 @@ for more information and for the scientific backgorund of Dynamic Networks and a
 
 `ODyN` is available at [odyn.epfl.ch](https://odyn.epfl.ch).
 
->**Warning**: **ODyN is in active state of development**. There might be errors, or bugs, or malfunctions. Please, **help us** to improve our work! You can report any issue or problems you run into using the [Issues](https://github.com/SMAC-Group/ODyN/issues) page of this repository, we will do our best to assist you and correct problems as soon as possible.
+>**Warning**: **ODyN is in active state of development**. There might be errors, or bugs, or malfunctions, or all of these at the same time. Please, **help us** to improve our work! You can report any issue or problems you run into using the [Issues](https://github.com/SMAC-Group/ODyN/issues) page of this repository, we will do our best to assist you and correct problems as soon as possible. When reporting an issue, be sure to include the data file (`.zip`) and the configuration (`.RData`) that you used, so that we can easily reproduce the problem.
 
 # Examples
 
-Example data and configuration is provided in this repository as described in the following (to use these files in ODyN please see the *"Documentation"* section later on). Among other things, this data allows to reproduce some of the results presented in [1,3,4]. 
+Example data and configuration is provided in this repository as described in the following (to use these files in ODyN please see the *"Documentation"* section later on). 
 
 ## Example 1 to 3
 
 Most of the data has been gently made available by Dr. Julien Vallet, director of [Helimap Sixense](https://helimap.ch), and described in the following scientific publication:
 
-- Vallet, J., Gressin, A., Clausen, P., and Skaloud, J. "Airborne And Mobile Lidar, Which Sensors For Which Application?". *The International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences*, 43 (2020): 397-405. [PDF](https://doi.org/10.5194/isprs-archives-XLIII-B1-2020-397-2020)
+- Vallet, J., Gressin, A., Clausen, P., and Skaloud, J., "Airborne And Mobile Lidar, Which Sensors For Which Application?". *The International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences*, 43 (2020): 397-405. [PDF](https://doi.org/10.5194/isprs-archives-XLIII-B1-2020-397-2020)
+
+Among other things, this data allows to reproduce some of the results presented in [1, 3, 4].
 
 ### Configuration file
 
@@ -39,57 +41,59 @@ All data files can be used with the same configuration file available at [data/v
 ### Data Files
 
 - Example 1 - Inertial Navigation: [data/vallet/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS.zip)
-- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences: [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+lidar.zip)
+- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences: [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+lidar.zip)
 - Example 3 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+photo.zip)
 
 ## Example 4
 
-This data corresponds to the flight `ign8`, part of the open-data releases extensively discussed in
+This data corresponds to the flight `ign8`, part of the open-data releases extensively discussed in:
 
-- Skaloud, J., Cucci, D.A., and Paul, K.J. "Fixed-wing micro UAV open data with digicam and raw INS/GNSS". *ISPRS Annals of Photogrammetry, Remote Sensing and Spatial Information Sciences* 51 (2021): 105-111. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2021-105-2021)
+- Skaloud, J., Cucci, D.A., and Paul, K.J., "Fixed-wing micro UAV open data with digicam and raw INS/GNSS". *ISPRS Annals of Photogrammetry, Remote Sensing and Spatial Information Sciences*, 51 (2021): 105-111. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2021-105-2021)
 
 The original data, including images and all raw sensor data, before conversion to the `ODyN` format, can be also found at [link](https://zenodo.org/record/4705424).
 
 ### Configuration file
 
-[data/ign8/configuration](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
+[data/ign8/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
 
 ###  Data File
 
- - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/configuration](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
+ - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/INS+photo.zip)
 
 
 # Documentation
 
 The use of `ODyN` is straightforward according to the following steps: 
 
-1. Upload a `.zip` file containing all sensor measurements (see section 'Input file formats' below).
+1. Upload a `.zip` file containing all sensor measurements (see section 'Input file format' below).
 2. Verify that the data files are loaded correctly (check the messages below the file upload input).
-3. [Optional] Upload an `.RData`file containing the configuration of all parameters (see *Step 8* below).
-4. Enter all required configuration parameter via GUI according to your setup (or in case of *Step 3* verify that these were loaded and interpretted correctly).
+3. [Optional] Upload an `.RData` file containing the configuration of all parameters (see *Step 8* below).
+4. Enter all required configuration parameter via the GUI according to your setup (or in case of *Step 3* verify that these were loaded and interpreted correctly).
 5. Hit the **Go!** button and wait. Depending on the input, few minutes may be required.
 6. If everything has gone well, check the results in the provided plots. Otherwise go back to *Step 4* and fix the problem.
 7. Download the solution file.
-8. [Optional] Download the configuration to be reused later on in *Step 3*.
+8. [Optional] Download the configuration to be reused later on in *Step 3* (N.B. this file can be downloaded even if *Step 5* has not been run or failed).
 9. [Optional] Generate a link to share the output on-line.
 
-## Input file formats
+## Input file format
 
-All input files should be included in a `.zip` archive. This file should be then uploaded in the **Inputs** section of the interface (*Step 1* above). The archive should contain the following files, format of which is specified further below with sections 'File xxx.xxx', that is preceeded with a short overview of file contents related to *Navigation* (mandatory) and *Navigation + Lidar/Photogrammetry* (optional).  
+All input files should be included in a `.zip` archive. This file should be then uploaded in the **Inputs** section of the interface (*Step 1* above). The archive should contain the following files, format of which is specified further below in the sections 'File xxx.xxx'. 
 
 >**Warning**: The file names *must match exactly*!
+
+A short overview of file contents related to *Navigation* (mandatory) and *Navigation + Lidar/Photogrammetry* (optional) follows.
 
 ### Navigation
 
 - `GPS.txt` or `GPS.cmb`: position measurements from a GNSS receiver,
 - `IMU.txt`: raw specific force and angular velocity measurements from an Inertial Measurement Unit (IMU),
 - `initial_guess.txt` or `initial_guess.out` **[optional]**: an initial trajectory solution that will be used to initialize the DN solver, 
-- `reference.txt` or `initial_guess.out` **[optional]**: a reference trajectory to compare the output of the DN solver, 
-- `config.Rdata` **[optional]**: configuration file obtained from previous `ODyN` execution (*applicable also to optical sensors below*)
+- `reference.txt` or `initial_guess.out` **[optional]**: a reference trajectory to evaluate the output of the DN solver, 
+- `config.Rdata` **[optional]**: configuration file obtained from previous `ODyN` execution (*applicable also to optical sensors below*).
 
-The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
+The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, a certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
 
->Note: IMU and GPS files are *always* required. `ODyN` uses  WGS84 normal gravity model. More detailed Earth Gravity Model(s) (e.g., EMG96) maybe implemented in the future. 
+>Note: IMU and GPS files are *always* required (albeit the GPS solution may present gaps). `ODyN` uses  WGS-84 normal gravity model. More detailed Earth Gravity Model(s) (e.g., EMG96) maybe implemented in the future. 
 
 ### Navigation + Photogrammetry
 
@@ -97,7 +101,7 @@ In case the user wants to fuse also image observations, the following additional
 
 - `bingo.txt`: image observations,
 - `image_timestamps.txt`: exposure times for the images included in `bingo.txt`,
-- `GCPs.txt` **[optional]**: 3D coordinates of Ground Control Points/Checkpoints
+- `GCPs.txt` **[optional]**: 3D coordinates of Ground Control Points/Checkpoints.
 
 The detailed description of the format of those files is given below.
 
@@ -111,13 +115,15 @@ The detailed description of the format of this file is given below.
 
 ### File `GPS.txt` 
 
+>NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format.
+
 This file contains a sequence of position observations obtained from a GNSS receiver. It is a Coma Separated Value (CSV) file with **four** ~~or **[opional] seven**~~ columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
 - ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented, use a global const. value) 
 
-An example of the content of this file (~~without incertitudes~~) is given below:
+An example of the content of this file is given below:
 
 ```
 396400.000, 46.569360752778, 6.533852830556, 609.752100000000
@@ -126,23 +132,22 @@ An example of the content of this file (~~without incertitudes~~) is given below
 396403.000, 46.569749733333, 6.534465997222, 607.169700000000
 396404.000, 46.569701600000, 6.534688980556, 606.820900000000
 ```
-If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. This also holds if such file is not provided, but complex maneuvers during GNSS outages can prevent the solver to converge.
 
->NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format
+If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. This also holds if such file is not provided, but complex maneuvers during GNSS outages can prevent the solver to converge.
 
 ### File `IMU.txt`
 
-This file contains a sequence of raw specific force and angular velocity observations obtained from an IMU. It is a CSV file with **seven** columns and no header.
+This file contains a sequence of raw specific force and angular velocity observations obtained from an Inertial Measurement Unit (IMU). It is a CSV file with **seven** columns and no header.
 
 - Column 1: measurement timestamp, unit *seconds*, 
 - Column 2 - 4: angular velocity, unit *rad/s*,
 - Column 5 - 7: specific force, unit  *m/s<sup>2</sup>*.
 
-The `IMU.txt` files sets the time limits for the processing, meaning that no solution can be computed for timestamps before the first or after the last entry in the file. 
+>NOTE: The `IMU.txt` files sets the time limits for the processing, meaning that no solution can be computed for timestamps before the first or after the last entry in the file. 
 
-The IMU observations must be synchronized with the GPS or GNSS receiver, in the sense that the measurement timestamps reported for the IMU readings should be in GPS time. If this is not the case, the two sensors can not be properly fused together by `ODyN`. Small jitters or delays can be tolerated, but a reduction of the performance (that is difficult to quantify) should be expected. An external solution for IMU sensor time-stamping and synchronization is to use the [SentiBoard](https://sentisystems.com/sales-2/).
+The IMU observations must be synchronized with the GPS or GNSS receiver, in the sense that the measurement timestamps reported for the IMU readings should be expressed in GPS time. If this is not the case, the two sensors can not be properly fused together by `ODyN`. Small jitters or delays can be tolerated, but a reduction of the performance (that is difficult to quantify) should be expected. An external solution for IMU sensor time-stamping and synchronization is to use the [SentiBoard](https://sentisystems.com/sales-2/).
 
-Additionally, the IMU must have a constant rate and no samples can be missing. `ODyN` determines the nominal frequency of the IMU taking the difference between the timestamps of the first two measurements. The user should also make sure that a sufficient number of digits is employed to represent IMU readings in the CSV file.
+Additionally, the IMU must have **a constant rate** (up to 10% jitter with respect to the sampling period is accepted) and no samples can be missing.  The user should also make sure that a sufficient number of digits is employed to represent IMU readings in the CSV file.
 
 An example of the content of this file for a 500 Hz IMU is given below:
 
@@ -154,7 +159,9 @@ An example of the content of this file for a 500 Hz IMU is given below:
 396401.008, 0.034914290, 0.300723380, 0.640139446, -0.026983862, 7.038125840, -16.567082796
 ```
 
-### File `initial_guess.txt` [optional]
+### File `initial_guess.txt` and `reference.txt` [optional]
+
+> NOTE: *Alterantive* files are `initial_guess.out` and `reference.out`, corresponding to Applanix's [SBET](https://github.com/schwehr/research-tools/blob/master/python-binary-files.org) (or SNV, which is the same) format.
 
 This file contains an initial solution for the body frame position and orientation that is used to initialize the Dynamic Network solver. It is a CSV file with **eight** columns and no header.
 - Column 1: timestamp, unit *seconds*,
@@ -165,25 +172,16 @@ A row in the `initial_guess.txt` file should be present for each IMU measurement
 An example of the content of this file is given below:
 
 ```
-396401.000, -1905.483030452, 1448.567031339, 605.999008116, -0.218175913, 0.909282389, 0.338522248, -0.104916617
-396401.020, -1905.182801199, 1448.991561633, 605.969088974, -0.218858188, 0.911660293, 0.331996401, -0.103706282
-396401.040, -1904.878848204, 1449.412015129, 605.939719655, -0.219702240, 0.913903930, 0.325544215, -0.102623076
-396401.060, -1904.571240963, 1449.828357413, 605.910750385, -0.220010575, 0.916213164, 0.319082538, -0.101661786
-396401.080, -1904.259969614, 1450.240503639, 605.882340958, -0.220546280, 0.918408515, 0.312620830, -0.100763856
+396401.000, 46.569701600000, 6.534688980556, 606.820900000000, -0.218175913, 0.909282389, 0.338522248, -0.104916617
+396401.020, 46.569360752778, 6.533852830556, 609.752100000000, -0.218858188, 0.911660293, 0.331996401, -0.103706282
+396401.040, 46.569583791667, 6.533973002778, 607.718300000000, -0.219702240, 0.913903930, 0.325544215, -0.102623076
+396401.060, 46.569719905556, 6.534210213889, 606.953900000000, -0.220010575, 0.916213164, 0.319082538, -0.101661786
+396401.080, 46.569749733333, 6.534465997222, 607.169700000000, -0.220546280, 0.918408515, 0.312620830, -0.100763856
 ```
-> NOTE: *Alterantive* file is `initial_guess.out` corresponding to Applanix's [SBET](https://github.com/schwehr/research-tools/blob/master/python-binary-files.org) (or SNV, which is the same) format  
-
-
-### File `reference.txt` [optional]
-
-Same format as `initial_guess.txt` 
-
-> NOTE: *Alterantive* file is `reference.out` corresponding to Applanix's [SBET](https://github.com/schwehr/research-tools/blob/master/python-binary-files.org) (or SNV, whichi is the same) format  
-
 
 ### File `bingo.txt`
 
-This is a file format of image observations as used within BINGO adjustment software that is supported also by modern photogrammetric suites (e.g., Pix4D, AgiSoft). Image and tiepoint ids are mandatory. *All* image ids must be present in the file `image_timestamps.txt`, see later on. 
+This is a file format of image observations as used within [BINGO](https://bingo-atm.de/) adjustment software that is supported also by modern photogrammetric suites (e.g., Pix4D, AgiSoft). Image and tiepoint ids are mandatory. *All* image ids must be present in the file `image_timestamps.txt`, see later on. 
 
 `ODyN` interprets tipeoints ids between 1 and 999 as GCPs/checkpoints observations and uses a different standard deviation for image measurements (as specified in the GUI). Only those points will be searched for in the `GCPs.txt` file.
 
@@ -217,8 +215,7 @@ An example of the content of this file for two photos is given below:
 
 ### File `image_timestamps.txt`
 
-Photo ID with exposure time (1 per line) for all images included in `bingo.txt` in a chronological order.
-Time unis needs to be the same as for IMU.txt and GPS.txt. 
+Photo ID with exposure time (1 per line) for all images included in `bingo.txt` in a chronological order. Timestamps should be expressed in GPS time.
 
 - Column 1: photo no., unit *integer*, 
 - Column 2: timestamp, unit *seconds*
@@ -226,8 +223,8 @@ Time unis needs to be the same as for IMU.txt and GPS.txt.
 An example of the content of this file is given below: 
 
 ```
-1,   396774.806328
-2,   306776.213498
+1, 396774.806328
+2, 306776.213498
 ```
 
 ### File `GCPs.txt`
@@ -237,6 +234,15 @@ Ground control (or check-points) point coordinates
 - Column 1: gcp_no, unit *integer*
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meters*,
 
+An example of the content of this file is given below: 
+
+```
+1, 46.569826426, 6.545714107, 509.828
+2, 46.571215814, 6.546098940, 510.910
+3, 46.573408778, 6.543244972, 511.871
+4, 46.569325989, 6.542046817, 518.303
+6, 46.569889128, 6.539480720, 518.907
+```
 
 ### File `LiDAR_p2p.txt` 
 
