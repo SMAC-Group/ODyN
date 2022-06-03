@@ -1,4 +1,6 @@
-# ODyN, an Online Dynamic Network solver
+<img src="https://github.com/SMAC-Group/ODyN/raw/master/images/logo.png" width="400">
+
+## an Online Dynamic Network solver
 
 This repository hosts `ODyN`, a free Dynamic Network (DN) solver that runs online and uses the browser as an interface for data I/O, option settings and result visualization. `ODyN` fuses information from navigation (GNSS, inertial) and optical sensors (camera, lidar) in a single adjustment and it can be used to optimally estimate a high-frequency trajectory for precise geo-referencing, to improve photogrammetric and/or lidar reconstructions in challenging scenarios or to determine system and sensor calibration parameters.
 
