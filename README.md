@@ -39,7 +39,7 @@ All data files can be used with the same configuration file available at [data/v
 ### Data Files
 
 - Example 1 - Inertial Navigation: [data/vallet/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS.zip)
-- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences: [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+lidar.zip)
+- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences: [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+lidar.zip)
 - Example 3 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+photo.zip)
 
 ## Example 4
@@ -56,7 +56,7 @@ The original data, including images and all raw sensor data, before conversion t
 
 ###  Data File
 
- - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/configuration](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
+ - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/configuration](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/INS+photo.zip)
 
 
 # Documentation
