@@ -8,7 +8,7 @@ The white paper describing `ODyN` can be found at
 
 1. Cucci, D.A., "ODyN: an online dynamic network solver for photogrammetry and LiDAR geo-referencing". *ISPRS Annals of the Photogrammetry, Remote Sensing and Spatial Information Sciences*, V-1-2022, 153–159. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2022-153-2022)
 
-for more information and for the scientific backgorund of Dynamic Networs and applications to navigation, mapping and sensor orientation in general, please refer to:
+for more information and for the scientific backgorund of Dynamic Networks and applications to navigation, mapping and sensor orientation in general, please refer to the following scientific publications:
 
 2. Cucci, D.A., Rehak. M, and Skaloud, J. "Bundle adjustment with raw inertial observations in UAV applications". *ISPRS Journal of photogrammetry and remote sensing* 130 (2017): 1-12. [PDF](https://drive.google.com/file/d/1U2RKh7T98bFJYvnMGHIOrxKyIRVDP0Oi/view?usp=sharing)
 3. Brun, A., Cucci, D.A., and Skaloud, J. "Lidar point–to–point correspondences for rigorous registration of kinematic scanning in dynamic networks." *ISPRS Journal of Photogrammetry and Remote Sensing*, 189, 185-200. [PDF](https://doi.org/10.1016/j.isprsjprs.2022.04.027)
@@ -20,31 +20,44 @@ for more information and for the scientific backgorund of Dynamic Networs and ap
 
 `ODyN` is available at [odyn.epfl.ch](https://odyn.epfl.ch).
 
-**N.B. ODyN is in active state of development**. There might be errors, or bugs, or malfunctions. Please, **help us** to improve our work! You can report any issue or problems you run into using the [Issues](https://github.com/SMAC-Group/ODyN/issues) page of this repository, we will do our best to assist you and correct problems as soon as possible.
+>**Warning**: **ODyN is in active state of development**. There might be errors, or bugs, or malfunctions. Please, **help us** to improve our work! You can report any issue or problems you run into using the [Issues](https://github.com/SMAC-Group/ODyN/issues) page of this repository, we will do our best to assist you and correct problems as soon as possible.
 
 # Examples
 
 Example data and configuration is provided in this repository as described in the following (to use these files in ODyN please see the *"Documentation"* section later on). Among other things, this data allows to reproduce some of the results presented in [1,3,4]. 
 
+## Example 1 to 3
+
 Most of the data has been gently made available by Dr. Julien Vallet, director of [Helimap Sixense](https://helimap.ch), and described in the following scientific publication:
 
 - Vallet, J., Gressin, A., Clausen, P., and Skaloud, J. "Airborne And Mobile Lidar, Which Sensors For Which Application?". *The International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences*, 43 (2020): 397-405. [PDF](https://doi.org/10.5194/isprs-archives-XLIII-B1-2020-397-2020)
 
-### Configuration
+### Configuration file
 
-All data files can be used with the same configuration file available at [data/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/configuration.RData)
+All data files can be used with the same configuration file available at [data/vallet/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/configuration.RData)
 
-### Inertial Navigation
+### Data Files
 
-Data file: [data/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS.zip)
+- Example 1 - Inertial Navigation: [data/vallet/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS.zip)
+- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences: [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+lidar.zip)
+- Example 3 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+photo.zip)
 
-### Inertial Navigation + LiDAR point-to-point correspondences
+## Example 4
 
-Data file: [data/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+lidar.zip)
+This data corresponds to the flight `ign8`, part of the open-data releases extensively discussed in
 
-### Inertial Navigation + image tie-points (photogrammetry)
+- Skaloud, J., Cucci, D.A., and Paul, K.J. "Fixed-wing micro UAV open data with digicam and raw INS/GNSS". *ISPRS Annals of Photogrammetry, Remote Sensing and Spatial Information Sciences* 51 (2021): 105-111. [PDF](https://doi.org/10.5194/isprs-annals-V-1-2021-105-2021)
 
-Data file: [data/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/INS+photo.zip)
+The original data, including images and all raw sensor data, before conversion to the `ODyN` format, can be also found at [link](https://zenodo.org/record/4705424).
+
+### Configuration file
+
+[data/ign8/configuration](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
+
+###  Data File
+
+ - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/configuration](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
+
 
 # Documentation
 
@@ -54,7 +67,7 @@ The use of `ODyN` is straightforward according to the following steps:
 2. Verify that the data files are loaded correctly (check the messages below the file upload input).
 3. [Optional] Upload an `.RData`file containing the configuration of all parameters (see *Step 8* below).
 4. Enter all required configuration parameter via GUI according to your setup (or in case of *Step 3* verify that these were loaded and interpretted correctly).
-5. Hit the **Process** button and wait. Depending on the input, few minutes may be required.
+5. Hit the **Go!** button and wait. Depending on the input, few minutes may be required.
 6. If everything has gone well, check the results in the provided plots. Otherwise go back to *Step 4* and fix the problem.
 7. Download the solution file.
 8. [Optional] Download the configuration to be reused later on in *Step 3*.
@@ -68,10 +81,10 @@ All input files should be included in a `.zip` archive. This file should be then
 
 ### Navigation
 
-- `GPS.txt`: position measurements from a GNSS receiver,
+- `GPS.txt` or `GPS.cmb`: position measurements from a GNSS receiver,
 - `IMU.txt`: raw specific force and angular velocity measurements from an Inertial Measurement Unit (IMU),
-- `initial_guess.txt` **[optional]**: an initial trajectory solution that will be used to initialize the DN solver, 
-- `reference.txt` **[optional]**: a reference trajectory to compare the output of the DN solver, 
+- `initial_guess.txt` or `initial_guess.out` **[optional]**: an initial trajectory solution that will be used to initialize the DN solver, 
+- `reference.txt` or `initial_guess.out` **[optional]**: a reference trajectory to compare the output of the DN solver, 
 - `config.Rdata` **[optional]**: configuration file obtained from previous `ODyN` execution (*applicable also to optical sensors below*)
 
 The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
@@ -92,7 +105,7 @@ The detailed description of the format of those files is given below.
 
 In case the user wants to fuse also lidar point-to-point spatial constraints, the following additional file should be included in the archive:
 
-- `lidar_tp.txt`: lidar observations of tie-points.   
+- `LiDAR_p2p.txt`: lidar observations of tie-points.   
 
 The detailed description of the format of this file is given below.
 
@@ -170,54 +183,38 @@ Same format as `initial_guess.txt`
 
 ### File `bingo.txt`
 
-This is a file format of image observations as used within BINGO adjustment software that is supported also by modern photogrammetric suites (e.g., Pix4D, AgiSoft). However, in contrary to BINGO, the unites of image coordinates are in *pixels*!
+This is a file format of image observations as used within BINGO adjustment software that is supported also by modern photogrammetric suites (e.g., Pix4D, AgiSoft). Image and tiepoint ids are mandatory. *All* image ids must be present in the file `image_timestamps.txt`, see later on. 
 
-The input of the photo measures is effected with free format. The first line contains photo and camera number. If the camera number is missing, the camera number of the preceding photo is used. The default value for the camera number of the first photo is 1. Optionally, two dummy coordinate values between photo and camera number may be given. A negative point number (for example -99) indicates end of data for each photo. Then the next photo follows. End of data is indicated by an **END** statement of the last line in the file!
+`ODyN` interprets tipeoints ids between 1 and 999 as GCPs/checkpoints observations and uses a different standard deviation for image measurements (as specified in the GUI). Only those points will be searched for in the `GCPs.txt` file.
 
-
-| First photo | photo no. camera no. |
-| --- | ----------- |
-| Image obs. | point no. x' y' |
-|            | point no. x' y' |
-|            | : |
-|            | point no. x' y' |
-| Last line  | -99 |
-| Next photo | photo no. (camera no.) |
-| Image obs. | point no. x' y' |
-|            | point no. x' y' |
-|            | : |
-|            | point no. x' y' |
-| Last line  | -99 |
-| :  | : |
-|    | END |
-
-> units: *pixels*.  
+>**Warning**: In contrary to BINGO, the unites of image coordinates are in *pixels* and the origin of the pixel is at the top-left corner (and not at the center)!
 
 An example of the content of this file for two photos is given below: 
 
 ```
-1   1
-11 -5.924 -0.277
-12 -5.933 0.290
-13 -5.942 0.868
-14 -5.951 1.457
-15 27.227 -6.921
-16 28.036 -5.513
-17 28.886 -4.032
-18 29.782 -2.473
-–99
-2
-11 -8.289 0.204
-12 -8.294 0.658
-13 -8.299 1.118
-14 -8.303 1.583
-15 9.802 -4.320
-16 10.054 -3.229
-17 10.314 -2.106
-18 10.582 -0.949
+1 CAMERA
+1 3411.610 1707.340
+1019 3041.023 3454.031
+1032 338.923 1574.094
+1036 1244.775 2092.072
+1038 2847.057 2157.910
+1119 1812.034 1858.000
+1123 1286.664 2111.538
+1163 3422.762 1695.999
+1174 3023.624 2085.276
 -99
-END
+2 CAMERA
+1 4523.190 1209.450
+1019 4260.974 2934.453
+1032 1452.491 1240.774
+1036 2414.891 1711.515
+1038 4005.476 1684.510
+1119 2972.928 1444.660
+1123 2459.228 1728.136
+1163 4533.667 1197.529
+-99
 ```
+
 ### File `image_timestamps.txt`
 
 Photo ID with exposure time (1 per line) for all images included in `bingo.txt` in a chronological order.
@@ -241,14 +238,14 @@ Ground control (or check-points) point coordinates
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meters*,
 
 
-### File `lidar_tp.txt` 
+### File `LiDAR_p2p.txt` 
 
 This file contains the spatial conditions between two points observed by lidar from different parts of the trajectory. These tie-points are expressed by their respective time and coordinates in the *scanner frame* in a CSV file with **eight** columns and no header.
 
 - Column 1 - 2: time stamps in *seconds* for the first and second tie-points, respectively
 - Column 3 - 5: x-y-z coordinates of the **first** tie-point in the scanner frame, units: *meters* 
 - Column 6 - 8: x-y-z coordinates of the **second** tie-point in the scanner frame, units: *meters* 
-- ~~Column     9:**[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*~~ (not yet implemented, uses global const. value)
+- ~~Column     9: **[optional]** incertitude (*1-sigma*) in the spatial proximity (Euclidean distance) both points, unit: *meter*~~ (not yet implemented, uses global const. value)
 
 ``` 
 396765.649713,396660.533676,271.420000,-2.570000,18.060000,263.280000,-2.520000,-135.520000
