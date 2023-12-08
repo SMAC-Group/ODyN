@@ -100,7 +100,7 @@ A short overview of file contents related to *Navigation* (mandatory) and *Navig
 The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, a certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
 
 >NOTE: IMU and GPS files are *always* required (albeit the GPS solution may present gaps). `ODyN` uses  WGS-84 normal gravity model when fusing in global coordinate system. More detailed Earth Gravity Model(s) (e.g., EMG96) maybe implemented in the future.   
->In local frame, a constant gravity model is used. This is suitable only for low cost inertial sensors being operated indoors or over small areas. For any other case global frame should be use. 
+>In local frame, a constant gravity model is used. This is suitable only for low cost inertial sensors being operated indoors or over small areas. For any other case the global frame should be used. 
 
 ### Navigation + Photogrammetry
 
@@ -124,7 +124,7 @@ The detailed description of the format of this file is given below.
 
 >NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format.
 
-This file contains a sequence of position observations obtained from a GNSS receiver or other position-fixing sensor (see the note in [Navigation](### Navigation)). It is a Coma Separated Value (CSV) file with **four** ~~or **[optional] seven**~~ columns and no header. 
+This file contains a sequence of position observations obtained from a GNSS receiver or other position-fixing sensor (see the note in [Navigation](#Navigation)). It is a Coma Separated Value (CSV) file with **four** ~~or **[optional] seven**~~ columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter* **or** x, y, z, in local coordinates, units: *3x meters*
