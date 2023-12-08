@@ -73,9 +73,9 @@ The use of `ODyN` is straightforward according to the following steps:
 4. Enter all required configuration parameters via the GUI according to your setup (or in case of *Step 3* verify that these were loaded and interpreted correctly).
 5. Hit the **Go!** button and wait. Depending on the input, few minutes may be required.
 6. If everything has gone well, check the results in the provided plots. Otherwise go back to *Step 4* and fix the problem.
-7. Download the solution file (containing adjusted parameters and high-frequency trajectory).
+7. Download the solution file.
 8. [Optional] Download the configuration to be reused later on in *Step 3* (N.B. this file can be downloaded even if *Step 5* has not been run or failed).
-9. [Optional] Generate a link to share the output on-line.
+9. [Optional] Generate a link to share the output online.
 
 ## Input file format
 
@@ -83,11 +83,15 @@ All input files should be included in a `.zip` archive. This file should be then
 
 >**Warning**: The file names *must match exactly*!
 
+### Coordinate system
+
+`ODyN` allows to fuse navigation, lidar and photogrammetric data either in *Global* coordinate system (WGS84) or *Local* coordinate system (tangent plane) the latter intended for indoor use with low-cost inertial sensors. The coordinate system can be changed in `ODyN` **[Processing options]** panel and **must** correspond to the coordinate system of the input data.
+
 A short overview of file contents related to *Navigation* (mandatory) and *Navigation + Lidar/Photogrammetry* (optional) follows.
 
 ### Navigation
 
-- `GPS.txt` or `GPS.cmb`: position measurements from a GNSS receiver,
+- `GPS.txt` or `GPS.cmb`: position measurements from a GNSS receiver in global frame **or** position estimated via other means in local frame (e.g. visual inertial odometry)
 - `IMU.txt`: raw specific force and angular velocity measurements from an Inertial Measurement Unit (IMU),
 - `initial_guess.txt` or `initial_guess.out` **[optional]**: an initial trajectory solution that will be used to initialize the DN solver, 
 - `reference.txt` or `initial_guess.out` **[optional]**: a reference trajectory to evaluate the output of the DN solver, 
@@ -95,7 +99,8 @@ A short overview of file contents related to *Navigation* (mandatory) and *Navig
 
 The detailed description of the format of those files is further below. If the `initial_guess.txt` file  is not provided, `ODyN` will attempt to determine the initialization for the DN solver applying a [Savitzky–Golay](https://en.wikipedia.org/wiki/Savitzky%E2%80%93Golay_filter) filter to the provided GNSS positions to obtain an approximation of the body frame position at the frequency of the IMU. The initial orientation is derived assuming that the body frame mounting is either Front-Left-Up or Front-Right-Down and the x-axis is tangent to the body frame trajectory. For this approach to work, a certain velocity of the body frame is required with the velocity vector being principaly along the x-axis in the body frame. 
 
->Note: IMU and GPS files are *always* required (albeit the GPS solution may present gaps). `ODyN` uses  WGS-84 normal gravity model. More detailed Earth Gravity Model(s) (e.g., EMG96) maybe implemented in the future. 
+>NOTE: IMU and GPS files are *always* required (albeit the GPS solution may present gaps). `ODyN` uses  WGS-84 normal gravity model when fusing in global coordinate system. More detailed Earth Gravity Model(s) (e.g., EMG96) maybe implemented in the future.   
+>In local frame, a constant gravity model is used. This is suitable only for low cost inertial sensors being operated indoors or over small areas. For any other case global frame should be use. 
 
 ### Navigation + Photogrammetry
 
@@ -119,13 +124,13 @@ The detailed description of the format of this file is given below.
 
 >NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format.
 
-This file contains a sequence of position observations obtained from a GNSS receiver, or other position-fixing sensor (possibly also in a local frame -- see further remark applicable to low-cost IMU). It is a Coma Separated Value (CSV) file with **four** ~~or **[opional] seven**~~ columns and no header. 
+This file contains a sequence of position observations obtained from a GNSS receiver or other position-fixing sensor (see the note in [Navigation](### Navigation)). It is a Coma Separated Value (CSV) file with **four** ~~or **[optional] seven**~~ columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter* **or** x, y, z, in local coordinates, units: *3x meters*
 - ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented, use a global const. value) 
 
-An example of the content of this file is given below:
+An example of the content of this file is given below in global coordinates:
 
 ```
 396400.000, 46.569360752778, 6.533852830556, 609.752100000000
@@ -160,6 +165,8 @@ An example of the content of this file for a 500 Hz IMU is given below:
 396401.006, 0.022376484, 0.297568526, 0.640160221,  0.070694876, 7.878268971, -15.628652537
 396401.008, 0.034914290, 0.300723380, 0.640139446, -0.026983862, 7.038125840, -16.567082796
 ```
+>NOTE: ODyN allows to reduce the number of IMU nodes using IMU pre-integration method. The number of IMU epochs to pre-integrate can be modified in **[Sensors > IMU]** panel. While higher pre-integration reduce computation time, it can introduce aliasing when the preintegrated frequency is lower than the Nyquist frequency of motion, i.e. $f_{IMU}/n_{pre-int} < f_{Nyquist}$.
+
 
 ### File `initial_guess.txt` and `reference.txt` [optional]
 
@@ -167,11 +174,11 @@ An example of the content of this file for a 500 Hz IMU is given below:
 
 This file contains an initial solution for the body frame position and orientation that is used to initialize the Dynamic Network solver. It is a CSV file with **eight** columns and no header.
 - Column 1: timestamp, unit *seconds*,
-- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*, **or** x, y, z, in local coordinates, units: *3x meters*
 - Column 5 - 8: a quaternion representing R<sup>*n*</sup><sub>*b*</sub>, where *n* is a local level frame, unit: *N/A* 
 
 A row in the `initial_guess.txt` file should be present for each IMU measurement in the `IMU.txt` file. More rows are allowed, but not less.
-An example of the content of this file is given below:
+An example of the content of this file is given below in global coordinates:
 
 ```
 396401.000, 46.569701600000, 6.534688980556, 606.820900000000, -0.218175913, 0.909282389, 0.338522248, -0.104916617
@@ -234,9 +241,9 @@ An example of the content of this file is given below:
 Ground control (or check-points) point coordinates
 
 - Column 1: gcp_no, unit *integer*
-- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meters*,
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meters*, **or** x, y, z, in local coordinates, units: *3x meters*
 
-An example of the content of this file is given below: 
+An example of the content of this file is given below in global coordinates: 
 
 ```
 1, 46.569826426, 6.545714107, 509.828
