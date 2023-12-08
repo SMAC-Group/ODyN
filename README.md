@@ -58,7 +58,7 @@ The original data, including images and all raw sensor data, before conversion t
 
 [data/ign8/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/configuration.RData)
 
-###  Data File
+###  Data file
 
  - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/INS+photo.zip)
 
@@ -70,10 +70,10 @@ The use of `ODyN` is straightforward according to the following steps:
 1. Upload a `.zip` file containing all sensor measurements (see section 'Input file format' below).
 2. Verify that the data files are loaded correctly (check the messages below the file upload input).
 3. [Optional] Upload an `.RData` file containing the configuration of all parameters (see *Step 8* below).
-4. Enter all required configuration parameter via the GUI according to your setup (or in case of *Step 3* verify that these were loaded and interpreted correctly).
+4. Enter all required configuration parameters via the GUI according to your setup (or in case of *Step 3* verify that these were loaded and interpreted correctly).
 5. Hit the **Go!** button and wait. Depending on the input, few minutes may be required.
 6. If everything has gone well, check the results in the provided plots. Otherwise go back to *Step 4* and fix the problem.
-7. Download the solution file.
+7. Download the solution file (containing adjusted parameters and high-frequency trajectory).
 8. [Optional] Download the configuration to be reused later on in *Step 3* (N.B. this file can be downloaded even if *Step 5* has not been run or failed).
 9. [Optional] Generate a link to share the output on-line.
 
@@ -119,10 +119,10 @@ The detailed description of the format of this file is given below.
 
 >NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format.
 
-This file contains a sequence of position observations obtained from a GNSS receiver. It is a Coma Separated Value (CSV) file with **four** ~~or **[opional] seven**~~ columns and no header. 
+This file contains a sequence of position observations obtained from a GNSS receiver, or other position-fixing sensor (possibly also in a local frame -- see further remark applicable to low-cost IMU). It is a Coma Separated Value (CSV) file with **four** ~~or **[opional] seven**~~ columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
-- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter*,
+- Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter* **or** x, y, z, in local coordinates, units: *3x meters*
 - ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented, use a global const. value) 
 
 An example of the content of this file is given below:
