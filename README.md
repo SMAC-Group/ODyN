@@ -44,7 +44,7 @@ All data files can be used with the same configuration file available at [data/v
 ### Data Files
 
 - Example 1 - Inertial Navigation: [data/vallet/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS.zip)
-- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences: [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+lidar.zip)
+- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences (2022): [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+lidar.zip)
 - Example 3 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+photo.zip)
 
 ## Example 4
@@ -62,6 +62,24 @@ The original data, including images and all raw sensor data, before conversion t
 ###  Data file
 
  - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/INS+photo.zip)
+
+ ## Example 5
+
+ This data is an updated version of **Example 2** but relying on the latest version of lidar to lidar correspondences (2025), obtain with the method described in:
+
+ - Brun A., et. al. "*Generalization of point-to-point matching for rigorous optimization in kinematic laser scanning*". ISPRS Journal of Photogrammetry and Remote Sensing, 229 (2025): 107-121. [PDF](https://www.sciencedirect.com/science/article/pii/S0924271625003235)
+
+ Among other things, this data allows to reproduce results from Sec. 4.3. of the paper. 
+
+ ### Configuration file
+
+ [data/brun25/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/brun25/configuration.RData)
+
+ Note: after loading the configuration, in the **Lidar** configuration panel, please set the  *P2p correspondences std [m]* to 0.075 [m] and  *Huber Width* to 0.05 [m]. 
+
+ ### Data file
+
+ - Example 5 - Inertial Navigation + LiDAR point-to-point correspondences (2025): [data/brun25/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/brun25/INS+lidar.zip)
 
 
 # Documentation
