@@ -29,25 +29,40 @@ For more information and for the scientific backgorund of Dynamic Networks and a
 
 Example data and configuration is provided in this repository as described in the following (to use these files in ODyN please see the *"Documentation"* section later on). 
 
-## Example 1 to 3
+## Example 1 to 9
 
 Most of the data has been gently made available by Dr. Julien Vallet, director of [Helimap Sixense](https://helimap.ch), and described in the following scientific publication:
 
 - Vallet, J., Gressin, A., Clausen, P., and Skaloud, J., "Airborne And Mobile Lidar, Which Sensors For Which Application?". *The International Archives of Photogrammetry, Remote Sensing and Spatial Information Sciences*, 43 (2020): 397-405. [PDF](https://doi.org/10.5194/isprs-archives-XLIII-B1-2020-397-2020)
 
-Among other things, this data allows to reproduce some of the results presented in [1, 3, 4].
+Among other things, this data allows to reproduce some of the results presented in [1, 3, 4, 5].
 
-### Configuration file
+### Configuration files
 
-All data files can be used with the same configuration file available at [data/vallet/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/configuration.RData)
+MEMS IMU: [data/vallet/MEMS-imu/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/MEMS-imu/configuration.RData)  
+Commercial IMU: [data/vallet/commercial-imu/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/commercial-imu/configuration.RData) 
 
 ### Data Files
 
-- Example 1 - Inertial Navigation: [data/vallet/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS.zip)
-- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences (2022): [data/vallet/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+lidar.zip)
-- Example 3 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/INS+photo.zip)
+#### MEMS IMU
 
-## Example 4
+- Example 1 - Inertial Navigation: [data/vallet/MEMS-imu/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/MEMS-imu/INS.zip)
+- Example 2 - Inertial Navigation + LiDAR point-to-point correspondences (2022): [data/vallet/MEMS-imu/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/MEMS-imu/INS+lidar.zip)
+- Example 3 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/MEMS-imu/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/MEMS-imu/INS+photo.zip)
+- Example 4 - Inertial Navigation + LiDAR point-to-point correspondences (2022) + image tie-points (photogrammetry, corridor): [data/vallet/MEMS-imu/INS+lidar+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/MEMS-imu/INS+lidar+photo.zip)
+
+#### Commercial IMU (APX15)
+
+- Example 5 - Inertial Navigation: [data/vallet/commercial-imu/INS.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/commercial-imu/INS.zip)
+- Example 6 - Inertial Navigation + LiDAR point-to-point correspondences (2022): [data/vallet/commercial-imu/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/commercial-imu/INS+lidar.zip)
+- Example 7 - Inertial Navigation + image tie-points (photogrammetry, corridor): [data/vallet/commercial-imu/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/commercial-imu/INS+photo.zip)
+- Example 8 - Inertial Navigation + LiDAR point-to-point correspondences (2022) + image tie-points (photogrammetry, corridor): [data/vallet/commercial-imu/INS+lidar+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/commercial-imu/INS+lidar+photo.zip)
+
+#### Synthetic IMU
+
+- ~~Example 9 - Inertial Navigation with multiple IMUs~~ (not yet implemented) with (i) inertial data: [data/vallet/synthetic-MEMS-imu/IMU-data.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/synthetic-MEMS-imu/IMU-data.zip) and (ii) mounting parameters for each IMU: [data/vallet/synthetic-MEMS-imu/mounting.txt](https://github.com/SMAC-Group/ODyN/raw/master/data/vallet/synthetic-MEMS-imu/mounting.txt) 
+
+## Example 10
 
 This data corresponds to the flight `ign8`, part of the open-data releases extensively discussed in:
 
@@ -61,26 +76,25 @@ The original data, including images and all raw sensor data, before conversion t
 
 ###  Data file
 
- - Example 4 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/INS+photo.zip)
+- Example 10 - Inertial Navigation + image tie-points (phtogrammetry, block, calibration): [data/ign8/INS+photo.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/ign8/INS+photo.zip)
 
- ## Example 5
+## Example 11
 
- This data is an updated version of **Example 2** but relying on the latest version of lidar to lidar correspondences (2025), obtain with the method described in:
+This data is an updated version of **Example 2** but relying on the latest version of lidar to lidar correspondences (2025), obtain with the method described in:
 
- - Brun A., et. al. "*Generalization of point-to-point matching for rigorous optimization in kinematic laser scanning*". ISPRS Journal of Photogrammetry and Remote Sensing, 229 (2025): 107-121. [PDF](https://www.sciencedirect.com/science/article/pii/S0924271625003235)
+- Brun A., et. al. "*Generalization of point-to-point matching for rigorous optimization in kinematic laser scanning*". ISPRS Journal of Photogrammetry and Remote Sensing, 229 (2025): 107-121. [PDF](https://www.sciencedirect.com/science/article/pii/S0924271625003235)
 
- Among other things, this data allows to reproduce results from Sec. 4.3. of the paper. 
+Among other things, this data allows to reproduce results from Sec. 4.3. of the paper. 
 
- ### Configuration file
+### Configuration files
 
- [data/brun25/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/brun25/configuration.RData)
+[data/brun25/configuration.RData](https://github.com/SMAC-Group/ODyN/raw/master/data/brun25/configuration.RData)
 
- Note: after loading the configuration, in the **Lidar** configuration panel, please set the  *P2p correspondences std [m]* to 0.075 [m] and  *Huber Width* to 0.05 [m]. 
+Note: after loading the configuration, in the **Lidar** configuration panel, please set the  *P2p correspondences std [m]* to 0.075 [m] and  *Huber Width* to 0.05 [m]. 
 
- ### Data file
+### Data file
 
- - Example 5 - Inertial Navigation + LiDAR point-to-point correspondences (2025): [data/brun25/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/brun25/INS+lidar.zip)
-
+- Example 11 - Inertial Navigation + LiDAR point-to-point correspondences (2025): [data/brun25/INS+lidar.zip](https://github.com/SMAC-Group/ODyN/raw/master/data/brun25/INS+lidar.zip)
 
 # Documentation
 
