@@ -182,7 +182,7 @@ If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. 
 
 ### File `GPS_velocity.txt` [optionnal]
 
-This file contains a sequence of GPS velocity observations obtained from a GNSS receiver or other position-fixing sensor. It is a Coma Separated Value (CSV) file with **four** or **[optional] seven** columns and no header. 
+This file contains a sequence of GNSS velocity observations obtained from a GNSS receiver or other position-fixing sensor. It is a Coma Separated Value (CSV) file with **four** or **[optional] seven** columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: east, north and up velocity in local ENU frame, units: *m/s* 
