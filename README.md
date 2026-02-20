@@ -157,23 +157,51 @@ The detailed description of the format of this file is given below.
 
 >NOTE: *Alternative* file is `GPS.cmb` corresponding to (legacy) **Grafnav/Waypoint** format.
 
-This file contains a sequence of position observations obtained from a GNSS receiver or other position-fixing sensor (see the note in [Navigation](#Navigation)). It is a Coma Separated Value (CSV) file with **four** ~~or **[optional] seven**~~ columns and no header. 
+This file contains a sequence of position observations obtained from a GNSS receiver or other position-fixing sensor (see the note in [Navigation](#Navigation)). It is a Coma Separated Value (CSV) file with **four** or **[optional] seven** columns and no header. 
 
 - Column 1: epoch time, unit *seconds*,
 - Column 2 - 4: latitude, longitude and altitude, in WGS-84 ellipsoidal coordinates, units: *2x decimal degrees* and *meter* **or** x, y, z, in local coordinates, units: *3x meters*
-- ~~Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*.~~ (not yet implemented, use a global const. value) 
+- Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *meter*. 
 
 An example of the content of this file is given below in global coordinates:
 
+Without sigmas:
 ```
 396400.000, 46.569360752778, 6.533852830556, 609.752100000000
 396401.000, 46.569583791667, 6.533973002778, 607.718300000000
 396402.000, 46.569719905556, 6.534210213889, 606.953900000000
-396403.000, 46.569749733333, 6.534465997222, 607.169700000000
-396404.000, 46.569701600000, 6.534688980556, 606.820900000000
+```
+With sigmas: 
+```
+396400.000, 46.569360752778, 6.533852830556, 609.752100000000, 0.015, 0.015, 0.030
+396401.000, 46.569583791667, 6.533973002778, 607.718300000000, 0.017, 0.017, 0.035
+396402.000, 46.569719905556, 6.534210213889, 606.953900000000, 0.015, 0.015, 0.030
 ```
 
 If an `initial_guess.txt` file is provided, `ODyN` tolerates well GNSS outages. This also holds if such file is not provided, but complex maneuvers during GNSS outages can prevent the solver to converge.
+
+### File `GPS_velocity.txt` [optionnal]
+
+This file contains a sequence of GPS velocity observations obtained from a GNSS receiver or other position-fixing sensor. It is a Coma Separated Value (CSV) file with **four** or **[optional] seven** columns and no header. 
+
+- Column 1: epoch time, unit *seconds*,
+- Column 2 - 4: east, north and up velocity in local ENU frame, units: *m/s* 
+- Column 5 - 7: **[optional]** incertitudes (*1-sigma*) in east-north-up directions per epoch, unit: *m/s*. 
+
+An example of the content of this file is given below in global coordinates:
+
+Without sigmas:
+```
+396406.00, 12.340, -13.736, -0.786
+396407.00, 12.499, -14.512,  0.131
+396408.00, 13.320, -15.223,  0.592
+```
+With sigmas: 
+```
+396406.00, 12.340, -13.736, -0.786, 0.030, 0.038, 0.074
+396407.00, 12.499, -14.512,  0.131, 0.021, 0.027, 0.052
+396408.00, 13.320, -15.223,  0.592, 0.022, 0.027, 0.053
+```
 
 ### File `IMU.txt`
 
@@ -221,7 +249,7 @@ An example of the content of this file is given below in global coordinates:
 396401.080, 46.569749733333, 6.534465997222, 607.169700000000, -0.220546280, 0.918408515, 0.312620830, -0.100763856
 ```
 
-### File `bingo.txt`
+### File `bingo.txt` [optionnal]
 
 This is a file format of image observations as used within [BINGO](https://bingo-atm.de/) adjustment software that is supported also by modern photogrammetric suites (e.g., Pix4D, AgiSoft). Image and tiepoint ids are mandatory. *All* image ids must be present in the file `image_timestamps.txt`, see later on. 
 
@@ -255,7 +283,7 @@ An example of the content of this file for two photos is given below:
 -99
 ```
 
-### File `image_timestamps.txt`
+### File `image_timestamps.txt` [optionnal]
 
 Photo ID with exposure time (1 per line) for all images included in `bingo.txt` in a chronological order. Timestamps should be expressed in GPS time.
 
@@ -265,11 +293,11 @@ Photo ID with exposure time (1 per line) for all images included in `bingo.txt` 
 An example of the content of this file is given below: 
 
 ```
-1, 396774.806328
-2, 306776.213498
+1 396774.806328
+2 306776.213498
 ```
 
-### File `GCPs.txt`
+### File `GCPs.txt` [optionnal]
 
 Ground control (or check-points) point coordinates
 
@@ -286,7 +314,7 @@ An example of the content of this file is given below in global coordinates:
 6, 46.569889128, 6.539480720, 518.907
 ```
 
-### File `LiDAR_p2p.txt` 
+### File `LiDAR_p2p.txt` [optionnal]
 
 This file contains the spatial conditions between two points observed by lidar from different parts of the trajectory. These tie-points are expressed by their respective time and coordinates in the *scanner frame* in a CSV file with **eight** columns and no header.
 
